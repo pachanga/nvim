@@ -81,6 +81,8 @@ return {
     },
   },
 
+  { "Hoffs/omnisharp-extended-lsp.nvim", lazy = true },
+
   {
     'ludovicchabant/vim-gutentags',
     lazy = false,
@@ -236,7 +238,22 @@ return {
       --intelephense = {
       --  enabled = true
       --},
+
+      --omnisharp = {
+      --  cmd = { "dotnet", "/Users/ps/.local/share/nvim/mason/packages/omnisharp/OmniSharp.dll", "-lsp", "--hostPID", tostring(vim.fn.getpid())},
+      --  root_dir = require("lspconfig").util.root_pattern("unity/unity.sln", "*.csproj", "*.sln"),
+      --  handlers = {
+      --    ["textDocument/definition"] = function(...)
+      --      return require("omnisharp_extended").handler(...)
+      --    end,
+      --  },
+      --  enable_roslyn_analyzers = true,
+      --  organize_imports_on_format = true,
+      --  enable_import_completion = true,
+      --},
+
     },
+
     setup = {
       gopls = function(_, opts)
         -- workaround for gopls not supporting semanticTokensProvider
@@ -268,10 +285,26 @@ return {
         "gomodifytags",
         "impl",
         "delve",
+
         "phpcs",
         "php-cs-fixer",
+
+        "omnisharp",
+        --"csharp-language-server",
+        "csharpier",
+        "netcoredbg"
       } },
   },
+
+  -- doesn't support mason2 yet?
+  --{
+  --  "zapling/mason-lock.nvim",
+  --  init = function()
+  --    require("mason-lock").setup({
+  --        lockfile_path = vim.fn.stdpath("config") .. "/mason-lock.json" -- (default)
+  --    })
+  --  end
+  --},
 
   {
     "nvimtools/none-ls.nvim",
@@ -284,14 +317,18 @@ return {
     },
     opts = function(_, opts)
       local nls = require("null-ls")
+
       opts.sources = vim.list_extend(opts.sources or {}, {
         nls.builtins.code_actions.gomodifytags,
         nls.builtins.code_actions.impl,
         nls.builtins.formatting.goimports,
         nls.builtins.formatting.gofumpt,
       })
+
       table.insert(opts.sources, nls.builtins.formatting.phpcsfixer)
       table.insert(opts.sources, nls.builtins.diagnostics.phpcs)
+
+      table.insert(opts.sources, nls.builtins.formatting.csharpier)
     end,
   },
 
@@ -300,8 +337,23 @@ return {
     optional = true,
     opts = {
       formatters_by_ft = {
-        go = { "goimports", "gofumpt", "php_cs_fixer" },
+        go = {
+          "goimports",
+          "gofumpt",
+
+          "php_cs_fixer",
+
+          "csharpier",
+        },
       },
+
+      formatters = {
+          csharpier = {
+            command = "dotnet-csharpier",
+            args = { "--write-stdout" },
+          },
+      },
+
     },
   },
 
@@ -318,6 +370,10 @@ return {
         opts = {},
       },
     },
+  },
+
+  {
+    "Issafalcon/neotest-dotnet",
   },
 
   {
