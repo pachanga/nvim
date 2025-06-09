@@ -230,12 +230,12 @@ return {
           },
         },
       },
-      --phpactor = {
-      --  enabled = lsp == "phpactor",
-      --},
-      intelephense = {
-        enabled = true
+      phpactor = {
+        enabled = true,
       },
+      --intelephense = {
+      --  enabled = true
+      --},
     },
     setup = {
       gopls = function(_, opts)
