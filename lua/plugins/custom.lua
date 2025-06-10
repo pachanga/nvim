@@ -121,14 +121,9 @@ return {
     "nvim-lualine/lualine.nvim",
     event = "VeryLazy",
     opts = function(_, opts)
-      --opts.sections.lualine_c[0].path = 2
-      table.insert(opts.sections.lualine_c, { 'filename', path = 3 })
-      --table.insert(opts.sections.lualine_x, { "aerial" })
-      --table.insert(opts.sections.lualine_x, {
-      --  function()
-      --    return "😄"
-      --  end,
-      --})
+
+      opts.sections.lualine_c[4] = { "filename", path = 3 }
+
     end,
   },
 
