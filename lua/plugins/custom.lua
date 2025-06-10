@@ -46,6 +46,25 @@ return {
   },
 
   {
+    "gbprod/yanky.nvim",
+    enabled = false,  
+    keys = {
+      {
+        "<leader>y",
+        function()
+          if LazyVim.pick.picker.name == "telescope" then
+            require("telescope").extensions.yank_history.yank_history({})
+          else
+            vim.cmd([[YankyRingHistory]])
+          end
+        end,
+        mode = { "n", "x" },
+        desc = "Open Yank History",
+      }
+    }
+  },
+
+  {
     "nvim-treesitter/nvim-treesitter",
     opts = {
       highlight = {
@@ -115,6 +134,7 @@ return {
 
   {
     "akinsho/bufferline.nvim",
+    enabled = false,
     event = "VeryLazy",
     --keys = {
     --  { "<Tab>", "<Cmd>BufferLineCycleNext<CR>", desc = "Next tab" },
