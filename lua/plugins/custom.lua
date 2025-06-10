@@ -77,6 +77,8 @@ return {
         "vimdoc",
         "xml",
         "yaml",
+        "hcl",
+        "terraform",
       },
     },
   },
@@ -171,10 +173,20 @@ return {
     'saghen/blink.cmp',
     opts = {
       keymap = {
+        --preset = "enter",
+        --["<C-y>"] = { "select_and_accept" },
         --preset = 'super-tab',
-        --preset = 'default'
-        preset = "enter",
-        ["<C-y>"] = { "select_and_accept" },
+        preset = 'default',
+        ["<Tab>"] = { "select_next", "fallback" },
+        ["<S-Tab>"] = { "select_prev", "fallback" },
+      },
+      completion = {
+        list = {
+          selection = {
+            preselect = false,
+            autoinsert = false,
+          }
+        }
       }
     },
     cmdline = {
@@ -192,8 +204,15 @@ return {
   },
 
   {
+    'mg979/vim-visual-multi',
+    branch = "master"
+  },
+
+
+  {
     "neovim/nvim-lspconfig",
     opts = {
+      terraformls = {},
     servers = {
       gopls = {
         settings = {
@@ -292,7 +311,9 @@ return {
         "omnisharp",
         --"csharp-language-server",
         "csharpier",
-        "netcoredbg"
+        "netcoredbg",
+
+        "tflint",
       } },
   },
 
