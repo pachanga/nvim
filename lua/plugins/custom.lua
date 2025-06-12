@@ -36,13 +36,7 @@ return {
   },
 
   {
-    "gbprod/yanky.nvim",
-    enabled = false
-  },
-
-  {
     "echasnovski/mini.pairs",
-    enabled = false
   },
 
   {
@@ -72,7 +66,6 @@ return {
 
   {
     "gbprod/yanky.nvim",
-    enabled = false,  
     keys = {
       {
         "<leader>y",
