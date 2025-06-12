@@ -56,16 +56,16 @@ return {
     opts = {
       mappings = {
         -- Move visual selection in Visual mode. Defaults are Alt (Meta) + hjkl.
-        left = "<A-h>",
-        right = "<A-l>",
-        down = "<A-j>",
-        up = "<A-k>",
+        left = "<C-h>",
+        right = "<C-l>",
+        down = "<C-j>",
+        up = "<C-k>",
 
         -- Move current line in Normal mode
-        line_left = "<A-h>",
-        line_right = "<A-l>",
-        line_down = "<A-j>",
-        line_up = "<A-k>",
+        line_left = "<C-h>",
+        line_right = "<C-l>",
+        line_down = "<C-j>",
+        line_up = "<C-k>",
       },
     },
   },

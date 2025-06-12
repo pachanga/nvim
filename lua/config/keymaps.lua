@@ -27,12 +27,12 @@ vim.keymap.set("n", "<F3>", function()
 end, { desc = "Show buffers" })
 
 --let's remove these potentially conflicting with tmux mappings
---vim.keymap.del("n", "<m-k>")
---vim.keymap.del("n", "<m-j>")
---vim.keymap.del("v", "<m-k>")
---vim.keymap.del("v", "<m-j>")
---vim.keymap.del("i", "<m-k>")
---vim.keymap.del("i", "<m-j>")
+vim.keymap.del("n", "<m-k>")
+vim.keymap.del("n", "<m-j>")
+vim.keymap.del("v", "<m-k>")
+vim.keymap.del("v", "<m-j>")
+vim.keymap.del("i", "<m-k>")
+vim.keymap.del("i", "<m-j>")
 
 -- Save on escape
 --vim.keymap.set("n", "<Esc><Esc>", "<Esc>:up<CR>", { noremap = true })
