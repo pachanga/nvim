@@ -226,7 +226,7 @@ return {
     },
   },
 
-  f
+  {
     'saghen/blink.cmp',
     opts = {
       keymap = {
