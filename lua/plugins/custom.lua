@@ -215,6 +215,18 @@ return {
   },
 
   {
+    "folke/flash.nvim",
+    event = "VeryLazy",
+    vscode = true,
+    opts = {},
+    -- stylua: ignore
+    keys = {
+      -- let's add convenience mapping
+      { "<leader>,", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
+    },
+  },
+
+  f
     'saghen/blink.cmp',
     opts = {
       keymap = {
