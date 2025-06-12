@@ -2,14 +2,6 @@
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
 
---let's remove these potentially conflicting with tmux mappings
-vim.keymap.del("n", "<m-k>")
-vim.keymap.del("n", "<m-j>")
-vim.keymap.del("v", "<m-k>")
-vim.keymap.del("v", "<m-j>")
-vim.keymap.del("i", "<m-k>")
-vim.keymap.del("i", "<m-j>")
-
 vim.keymap.set("n", "<leader>p", LazyVim.pick("files"), { desc = "Find Files (Root Dir)" })
 vim.keymap.set("n", "<leader>t", "<Esc>:FzfLua tags<CR>", { desc = "Find Tags" })
 
@@ -33,6 +25,14 @@ vim.keymap.set("n", "<F3>", function()
         },
       },})
 end, { desc = "Show buffers" })
+
+--let's remove these potentially conflicting with tmux mappings
+--vim.keymap.del("n", "<m-k>")
+--vim.keymap.del("n", "<m-j>")
+--vim.keymap.del("v", "<m-k>")
+--vim.keymap.del("v", "<m-j>")
+--vim.keymap.del("i", "<m-k>")
+--vim.keymap.del("i", "<m-j>")
 
 -- Save on escape
 --vim.keymap.set("n", "<Esc><Esc>", "<Esc>:up<CR>", { noremap = true })
