@@ -20,11 +20,6 @@ return {
     opts = {
       style = "moon",
       on_highlights = function(hl, c)
-        hl.IlluminatedWordText = {
-          bg = c.none,
-          fg = c.none,
-          underline = true
-        }
       end,
     },
   },
@@ -97,9 +92,8 @@ return {
   {
     "nvim-treesitter/nvim-treesitter",
     opts = {
-      highlight = {
-        enable = false,
-      },
+      highlight = { enable = true },
+      indent = { enable = true },
       ensure_installed = {
         "bash",
         "c",
@@ -258,9 +252,13 @@ return {
 
   {
     'folke/noice.nvim',
-    config = {
-      cmdline = {
-        enabled = true
+    opts = {
+      routes = {
+        filter = {
+          any = {
+              { cond = function(_) return true end }
+          },
+        },
       }
     }
   },
@@ -275,86 +273,86 @@ return {
     "neovim/nvim-lspconfig",
     opts = {
       terraformls = {},
-    servers = {
-      gopls = {
-        settings = {
-          gopls = {
-            gofumpt = true,
-            codelenses = {
-              gc_details = false,
-              generate = true,
-              regenerate_cgo = true,
-              run_govulncheck = true,
-              test = true,
-              tidy = true,
-              upgrade_dependency = true,
-              vendor = true,
+      servers = {
+        gopls = {
+          settings = {
+            gopls = {
+              gofumpt = true,
+              codelenses = {
+                gc_details = false,
+                generate = true,
+                regenerate_cgo = true,
+                run_govulncheck = true,
+                test = true,
+                tidy = true,
+                upgrade_dependency = true,
+                vendor = true,
+              },
+              hints = {
+                assignVariableTypes = true,
+                compositeLiteralFields = true,
+                compositeLiteralTypes = true,
+                constantValues = true,
+                functionTypeParameters = true,
+                parameterNames = true,
+                rangeVariableTypes = true,
+              },
+              analyses = {
+                nilness = true,
+                unusedparams = true,
+                unusedwrite = true,
+                useany = true,
+              },
+              usePlaceholders = true,
+              completeUnimported = true,
+              staticcheck = true,
+              directoryFilters = { "-.git", "-.vscode", "-.idea", "-.vscode-test", "-node_modules" },
+              semanticTokens = true,
             },
-            hints = {
-              assignVariableTypes = true,
-              compositeLiteralFields = true,
-              compositeLiteralTypes = true,
-              constantValues = true,
-              functionTypeParameters = true,
-              parameterNames = true,
-              rangeVariableTypes = true,
-            },
-            analyses = {
-              nilness = true,
-              unusedparams = true,
-              unusedwrite = true,
-              useany = true,
-            },
-            usePlaceholders = true,
-            completeUnimported = true,
-            staticcheck = true,
-            directoryFilters = { "-.git", "-.vscode", "-.idea", "-.vscode-test", "-node_modules" },
-            semanticTokens = true,
           },
         },
+        phpactor = {
+          enabled = true
+        },
+        --intelephense = {
+        --  enabled = true
+        --},
+
+        --omnisharp = {
+        --  cmd = { "dotnet", "/Users/ps/.local/share/nvim/mason/packages/omnisharp/OmniSharp.dll", "-lsp", "--hostPID", tostring(vim.fn.getpid())},
+        --  root_dir = require("lspconfig").util.root_pattern("unity/unity.sln", "*.csproj", "*.sln"),
+        --  handlers = {
+        --    ["textDocument/definition"] = function(...)
+        --      return require("omnisharp_extended").handler(...)
+        --    end,
+        --  },
+        --  enable_roslyn_analyzers = true,
+        --  organize_imports_on_format = true,
+        --  enable_import_completion = true,
+        --},
+
       },
-      phpactor = {
-        enabled = true,
-      },
-      --intelephense = {
-      --  enabled = true
-      --},
 
-      --omnisharp = {
-      --  cmd = { "dotnet", "/Users/ps/.local/share/nvim/mason/packages/omnisharp/OmniSharp.dll", "-lsp", "--hostPID", tostring(vim.fn.getpid())},
-      --  root_dir = require("lspconfig").util.root_pattern("unity/unity.sln", "*.csproj", "*.sln"),
-      --  handlers = {
-      --    ["textDocument/definition"] = function(...)
-      --      return require("omnisharp_extended").handler(...)
-      --    end,
-      --  },
-      --  enable_roslyn_analyzers = true,
-      --  organize_imports_on_format = true,
-      --  enable_import_completion = true,
-      --},
-
-    },
-
-    setup = {
-      gopls = function(_, opts)
-        -- workaround for gopls not supporting semanticTokensProvider
-        -- https://github.com/golang/go/issues/54531#issuecomment-1464982242
-        LazyVim.lsp.on_attach(function(client, _)
-          if not client.server_capabilities.semanticTokensProvider then
-            local semantic = client.config.capabilities.textDocument.semanticTokens
-            client.server_capabilities.semanticTokensProvider = {
-              full = true,
-              legend = {
-                tokenTypes = semantic.tokenTypes,
-                tokenModifiers = semantic.tokenModifiers,
-              },
-              range = true,
-            }
-          end
-        end, "gopls")
-        -- end workaround
-      end,
-    }
+      setup = {
+        gopls = function(_, opts)
+          -- workaround for gopls not supporting semanticTokensProvider
+          -- https://github.com/golang/go/issues/54531#issuecomment-1464982242
+          LazyVim.lsp.on_attach(function(client, _)
+            if not client.server_capabilities.semanticTokensProvider then
+              local semantic = client.config.capabilities.textDocument.semanticTokens
+              client.server_capabilities.semanticTokensProvider = {
+                full = true,
+                legend = {
+                  tokenTypes = semantic.tokenTypes,
+                  tokenModifiers = semantic.tokenModifiers,
+                },
+                range = true,
+              }
+            end
+          end, "gopls")
+          -- end workaround
+        end,
+      }
     },
   },
 
