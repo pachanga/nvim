@@ -240,7 +240,7 @@ return {
         list = {
           selection = {
             preselect = false,
-            autoinsert = false,
+            auto_insert = true,
           }
         }
       }
