@@ -178,7 +178,8 @@ return {
     "cbochs/grapple.nvim",
     opts = {
         --scope = "git", -- also try out "git_branch"
-        scope = "global",
+        --scope = "global",
+        scope = "static",
     },
     event = { "BufReadPost", "BufNewFile" },
     cmd = "Grapple",
