@@ -14,17 +14,18 @@ vim.keymap.set("n", "<leader>G", function()
 end, { desc = "Grep Project" })
 
 --vim.keymap.set("n", "<leader>g", "<Esc>:FzfLua grep_project<CR>", { desc = "Grep Project" })
-vim.keymap.set("n", "<F3>", function()
-  Snacks.picker.buffers({
-    win = {
-        input = {
-          keys = {
-            ["<Tab>"] = { "list_down", mode = { "i", "n" } },
-            ["<S-Tab>"] = { "list_up", mode = { "i", "n" } },
-          },
-        },
-      },})
-end, { desc = "Show buffers" })
+
+--vim.keymap.set("n", "<F3>", function()
+--  Snacks.picker.buffers({
+--    win = {
+--        input = {
+--          keys = {
+--            ["<Tab>"] = { "list_down", mode = { "i", "n" } },
+--            ["<S-Tab>"] = { "list_up", mode = { "i", "n" } },
+--          },
+--        },
+--      },})
+--end, { desc = "Show buffers" })
 
 --let's remove these potentially conflicting with tmux mappings
 vim.keymap.del("n", "<m-k>")

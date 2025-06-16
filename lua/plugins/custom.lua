@@ -192,6 +192,14 @@ return {
   },
 
   {
+    "leath-dub/snipe.nvim",
+    keys = {
+      {"<F3>", function () require("snipe").open_buffer_menu() end, desc = "Open Snipe buffer menu"}
+    },
+    opts = {}
+  },
+
+  {
     "folke/snacks.nvim",
     opts = {
       picker = {
