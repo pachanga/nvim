@@ -13,19 +13,12 @@ vim.keymap.set("n", "<leader>G", function()
   require("fzf-lua").live_grep({ cmd = rg_cmd, cwd = LazyVim.root() })
 end, { desc = "Grep Project" })
 
---vim.keymap.set("n", "<leader>g", "<Esc>:FzfLua grep_project<CR>", { desc = "Grep Project" })
 
---vim.keymap.set("n", "<F3>", function()
---  Snacks.picker.buffers({
---    win = {
---        input = {
---          keys = {
---            ["<Tab>"] = { "list_down", mode = { "i", "n" } },
---            ["<S-Tab>"] = { "list_up", mode = { "i", "n" } },
---          },
---        },
---      },})
---end, { desc = "Show buffers" })
+-- change command must not interfere with registers
+vim.keymap.set('n', 'c', '"_c', { noremap = true })
+vim.keymap.set('v', 'c', '"_c', { noremap = true })
+vim.keymap.set('n', 'C', '"_C', { noremap = true })
+vim.keymap.set('v', 'C', '"_C', { noremap = true })
 
 --let's remove these potentially conflicting with tmux mappings
 vim.keymap.del("n", "<m-k>")
