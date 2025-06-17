@@ -8,6 +8,7 @@ vim.g.snacks_animate = false
 vim.opt.relativenumber = false
 vim.g.root_spec = { ".git" }
 vim.g.autoformat = false
+vim.opt.wrap = true
 
 if vim.fn.executable("rg") then
   -- if ripgrep installed, use that as a grepper
