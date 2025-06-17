@@ -22,14 +22,9 @@ local function find_proj_top_dir(start_dir)
       local marker_path = current_dir .. '/' .. marker
       local stat = vim.loop.fs_stat(marker_path)
       if stat then
-        -- For files (like gamectl), verify it's not a directory
-        if marker == 'gamectl' and stat.type ~= 'file' then
-          goto continue
-        end
         vcs_root = current_dir
         break
       end
-      ::continue::
     end
     -- Get parent directory
     local parent_dir = current_dir:match('^(.*)[/\\][^/\\]+$')
