@@ -29,6 +29,7 @@ return {
     opts = {
       keymap = {
           fzf = {
+              -- to fix list
               ["ctrl-q"] = "select-all+accept",
           },
       },
