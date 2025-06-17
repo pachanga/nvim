@@ -167,29 +167,11 @@ return {
     "akinsho/bufferline.nvim",
     enabled = false,
     event = "VeryLazy",
-    --keys = {
-    --  { "<Tab>", "<Cmd>BufferLineCycleNext<CR>", desc = "Next tab" },
-    --  { "<S-Tab>", "<Cmd>BufferLineCyclePrev<CR>", desc = "Prev tab" },
-    --},
-    opts = function(_, opts)
-      -- Set default options first
-      opts.options = {
-        mode = "buffers",
-        --numbers = "ordinal",
-        always_show_bufferline = true,
-        color_icons = false,
-        show_buffer_icons = false,
-        show_buffer_close_icons = false,
-        show_close_icon = false,
-      }
+  },
 
-      ---- Add the catppuccin highlights
-      --if (vim.g.colors_name or ""):find("catppuccin") then
-      --  opts.highlights = require("catppuccin.groups.integrations.bufferline").get()
-      --end
-
-      return opts
-    end,
+  {
+    "hrsh7th/nvim-cmp",
+    enabled = true
   },
 
   {
@@ -251,7 +233,10 @@ return {
 
   {
     'saghen/blink.cmp',
-    opts = {
+     dependencies = {
+       'Exafunction/codeium.nvim',
+     },
+     opts = {
       keymap = {
         --preset = "enter",
         --["<C-y>"] = { "select_and_accept" },
@@ -267,6 +252,12 @@ return {
             auto_insert = true,
           }
         }
+      },
+      sources = {
+        default = { 'lsp', 'path', 'snippets', 'buffer', 'codeium' },
+        providers = {
+          codeium = { name = 'Codeium', module = 'codeium.blink', async = true },
+        },
       }
     },
     cmdline = {
@@ -501,20 +492,16 @@ return {
     },
   },
 
-  --{
-  --  "ray-x/navigator.lua",
-  --  dependencies = {
-  --      {"hrsh7th/nvim-cmp"}, {"nvim-treesitter/nvim-treesitter"},
-  --      {"ray-x/guihua.lua", run = "cd lua/fzy && make"}, {
-  --          "ray-x/go.nvim",
-  --          event = {"CmdlineEnter"},
-  --          ft = {"go", "gomod"},
-  --          build = ':lua require("go.install").update_all_sync()'
-  --      }, {
-  --          "ray-x/lsp_signature.nvim", -- Show function signature when you type
-  --          event = "VeryLazy",
-  --          config = function() require("lsp_signature").setup() end
-  --      }
-  --  },
-  --},
+  {
+    "Exafunction/codeium.nvim",
+    dependencies = {
+        "nvim-lua/plenary.nvim",
+        "hrsh7th/nvim-cmp",
+    },
+    config = function()
+        require("codeium").setup({
+        })
+    end
+  },
+
 }
