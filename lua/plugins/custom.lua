@@ -191,17 +191,17 @@ return {
     },
   },
 
-  {
-    "leath-dub/snipe.nvim",
-    keys = {
-      {"<F3>", function () require("snipe").open_buffer_menu() end, desc = "Open Snipe buffer menu"}
-    },
-    opts = {
-      ui = { position = 'center', },
-      --preselect_current = true,
-      --sort = "last",
-    }
-  },
+  --{
+  --  "leath-dub/snipe.nvim",
+  --  keys = {
+  --    {"<F3>", function () require("snipe").open_buffer_menu() end, desc = "Open Snipe buffer menu"}
+  --  },
+  --  opts = {
+  --    ui = { position = 'center', },
+  --    --preselect_current = true,
+  --    --sort = "last",
+  --  }
+  --},
 
   {
     'b0o/incline.nvim',

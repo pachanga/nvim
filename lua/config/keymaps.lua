@@ -13,6 +13,18 @@ vim.keymap.set("n", "<leader>G", function()
   require("fzf-lua").live_grep({ cmd = rg_cmd, cwd = LazyVim.root() })
 end, { desc = "Grep Project" })
 
+vim.keymap.set("n", "<F3>", function()
+  Snacks.picker.buffers({
+    win = {
+        input = {
+          keys = {
+            ["<Tab>"] = { "list_down", mode = { "i", "n" } },
+            ["<S-Tab>"] = { "list_up", mode = { "i", "n" } },
+          },
+        },
+      },})
+end, { desc = "Show buffers" }
+)
 
 -- change command must not interfere with registers
 vim.keymap.set('n', 'c', '"_c', { noremap = true })
