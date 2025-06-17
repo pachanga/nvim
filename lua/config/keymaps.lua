@@ -15,9 +15,11 @@ end, { desc = "Grep Project" })
 
 vim.keymap.set("n", "<F3>", function()
   Snacks.picker.buffers({
-    win = {
+     focus = "list", --start in normal mode
+      win = {
         input = {
           keys = {
+            --["<Esc>"] = { "close", mode = { "n", "i" } },
             ["<Tab>"] = { "list_down", mode = { "i", "n" } },
             ["<S-Tab>"] = { "list_up", mode = { "i", "n" } },
           },
