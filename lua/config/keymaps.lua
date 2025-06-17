@@ -6,7 +6,7 @@ vim.keymap.set("n", "<leader>p", LazyVim.pick("files"), { desc = "Find Files (Ro
 vim.keymap.set("n", "<leader>t", "<Esc>:FzfLua tags<CR>", { desc = "Find Tags" })
 
 --- Finds the topmost VCS root directory starting from the given directory
---- Searches for .git (Git), .hg (Mercurial), or gamectl (Game version control)
+--- Searches for .git (Git), .hg (Mercurial), or gamectl
 --- @param start_dir string|nil Optional starting directory (defaults to current working directory)
 --- @return string|nil Path to VCS root directory or nil if not found
 local function find_proj_top_dir(start_dir)
