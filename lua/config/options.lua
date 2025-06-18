@@ -16,4 +16,9 @@ if vim.fn.executable("rg") then
   vim.opt.grepformat = "%f:%l:%c:%m,%f:%l:%m"
 end
 
+vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
+  pattern = "*.bhl",
+  command = "setfiletype go",
+})
+
 --vim.g.lazyvim_php_lsp = "intelephense"
