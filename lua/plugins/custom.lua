@@ -482,6 +482,16 @@ return {
   },
 
   {
+    'preservim/vimux',
+    keys = {
+      { "<leader>vp", "<cmd>VimuxPromptCommand<CR>", desc = "Vimux Prompt Command" },
+      { "<leader>vl", "<cmd>VimuxRunLastCommand<CR>", desc = "Vimux Run Last Command" },
+      { "<leader>vi", "<cmd>VimuxInspectRunner<CR>", desc = "Vimux Inspect Runner" },
+      { "<leader>vq", "<cmd>VimuxCloseRunner<CR>", desc = "Vimux Close Runner" },
+    }
+  },
+
+  {
     "Exafunction/codeium.nvim",
     dependencies = {
         "nvim-lua/plenary.nvim",

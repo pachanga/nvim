@@ -34,4 +34,5 @@ vim.lsp.config("bhl", {
     --},
   },
 })
+vim.env.BHL_REBUILD = 1
 vim.cmd([[ au BufNewFile,BufRead /*.bhl setf bhl ]])
