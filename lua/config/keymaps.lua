@@ -2,9 +2,6 @@
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
 
-vim.keymap.set("n", "<leader>p", LazyVim.pick("files"), { desc = "Find Files (Root Dir)" })
-vim.keymap.set("n", "<leader>t", "<Esc>:FzfLua tags<CR>", { desc = "Find Tags" })
-
 --- Finds the topmost VCS root directory starting from the given directory
 --- Searches for .git (Git), .hg (Mercurial), or gamectl
 --- @param start_dir string|nil Optional starting directory (defaults to current working directory)
@@ -35,6 +32,9 @@ local function find_proj_top_dir(start_dir)
   end
   return vcs_root
 end
+
+vim.keymap.set("n", "<leader>p", function() Snacks.picker.files({ cwd = find_proj_top_dir() }) end, { desc = "Find Files (Root Dir)" })
+vim.keymap.set("n", "<leader>t", "<Esc>:FzfLua tags<CR>", { desc = "Find Tags" })
 
 local rg_cmd = "rg --line-number --column --color=always -u -g !build/* -g !tags*"
 vim.keymap.set("n", "<leader>g", function()
