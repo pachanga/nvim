@@ -85,5 +85,6 @@ vim.keymap.del("v", "<m-j>")
 vim.keymap.del("i", "<m-k>")
 vim.keymap.del("i", "<m-j>")
 
+
 -- Save on escape
 --vim.keymap.set("n", "<Esc><Esc>", "<Esc>:up<CR>", { noremap = true })

@@ -232,11 +232,20 @@ return {
     event = "VeryLazy",
     vscode = true,
     opts = {},
-    -- stylua: ignore
-    keys = {
-      -- let's add convenience mapping
-      { "<leader>,", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
-    },
+    keys = {},
+  },
+
+  {
+    'Lokaltog/vim-easymotion',
+    config = function()
+      vim.g.EasyMotion_do_mapping = 0 -- Disable default mappings
+      vim.g.EasyMotion_smartcase = 1  -- Turn on case sensitive feature
+
+      -- Bi-directional find motion
+      -- Jump to anywhere you want with minimal keystrokes, with just one key binding.
+      -- `s{char}{label}`
+      vim.keymap.set('n', '<leader>,', '<Plug>(easymotion-s)')
+    end
   },
 
   {
