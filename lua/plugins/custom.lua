@@ -37,6 +37,25 @@ return {
   },
 
   {
+    "christoomey/vim-tmux-navigator",
+    cmd = {
+      "TmuxNavigateLeft",
+      "TmuxNavigateDown",
+      "TmuxNavigateUp",
+      "TmuxNavigateRight",
+      "TmuxNavigatePrevious",
+      "TmuxNavigatorProcessList",
+    },
+    keys = {
+      { "<c-w>h", "<cmd>:TmuxNavigateLeft<cr>" },
+      { "<c-w>j", "<cmd>:TmuxNavigateDown<cr>" },
+      { "<c-w>k", "<cmd>:TmuxNavigateUp<cr>" },
+      { "<c-w>l", "<cmd>:TmuxNavigateRight<cr>" },
+      { "<c-w>\\", "<cmd>:TmuxNavigatePrevious<cr>" },
+    },
+  },
+
+  {
     "echasnovski/mini.pairs",
   },
 
@@ -49,19 +68,19 @@ return {
     "echasnovski/mini.move",
     version = "*",
     opts = {
-      mappings = {
-        -- Move visual selection in Visual mode. Defaults are Alt (Meta) + hjkl.
-        left = "<C-h>",
-        right = "<C-l>",
-        down = "<C-j>",
-        up = "<C-k>",
+      --mappings = {
+      --  -- Move visual selection in Visual mode. Defaults are Alt (Meta) + hjkl.
+      --  left = "<C-h>",
+      --  right = "<C-l>",
+      --  down = "<C-j>",
+      --  up = "<C-k>",
 
-        -- Move current line in Normal mode
-        line_left = "<C-h>",
-        line_right = "<C-l>",
-        line_down = "<C-j>",
-        line_up = "<C-k>",
-      },
+      --  -- Move current line in Normal mode
+      --  line_left = "<C-h>",
+      --  line_right = "<C-l>",
+      --  line_down = "<C-j>",
+      --  line_up = "<C-k>",
+      --},
     },
   },
 
@@ -294,23 +313,24 @@ return {
   --  branch = "master"
   --},
 
-  {
-    "smoka7/multicursors.nvim",
-    event = "VeryLazy",
-    dependencies = {
-        'nvimtools/hydra.nvim',
-    },
-    opts = {},
-    cmd = { 'MCstart', 'MCvisual', 'MCclear', 'MCpattern', 'MCvisualPattern', 'MCunderCursor' },
-    keys = {
-            {
-                mode = { 'v', 'n' },
-                '<C-n>',
-                '<cmd>MCstart<cr>',
-                desc = 'Create a selection for selected text or word under the cursor',
-            },
-        },
-  },
+  -- it interferes with leader
+  --{
+  --  "smoka7/multicursors.nvim",
+  --  event = "VeryLazy",
+  --  dependencies = {
+  --      'nvimtools/hydra.nvim',
+  --  },
+  --  opts = {},
+  --  cmd = { 'MCstart', 'MCvisual', 'MCclear', 'MCpattern', 'MCvisualPattern', 'MCunderCursor' },
+  --  keys = {
+  --          {
+  --              mode = { 'v', 'n' },
+  --              '<C-n>',
+  --              '<cmd>MCstart<cr>',
+  --              desc = 'Create a selection for selected text or word under the cursor',
+  --          },
+  --      },
+  --},
 
 
   {
