@@ -128,6 +128,7 @@ return {
         "markdown",
         "markdown_inline",
         "php",
+        "twig",
         "printf",
         "python",
         "query",
