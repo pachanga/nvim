@@ -34,7 +34,9 @@ local function find_proj_top_dir(start_dir)
 end
 
 vim.keymap.set("n", "<leader>p", function() Snacks.picker.files({ cwd = find_proj_top_dir() }) end, { desc = "Find Files (Root Dir)" })
-vim.keymap.set("n", "<leader>t", "<Esc>:FzfLua tags<CR>", { desc = "Find Tags" })
+vim.keymap.set("n", "<leader>T", "<Esc>:FzfLua tags<CR>", { desc = "Find Tags" })
+vim.keymap.set("n", "<leader>t", "<Esc>:FzfLua lsp_live_workspace_symbols<CR>", { desc = "Workspace LSP symbols" })
+vim.keymap.set("n", "<leader>r",  function() Snacks.picker.lsp_references() end, { desc = "LSP references" })
 
 local rg_cmd = "rg --line-number --column --color=always -u -g !build/* -g !tags* -g !unity/Library/*" --why not put these into project's .rgignore?
 vim.keymap.set("n", "<leader>g", function()

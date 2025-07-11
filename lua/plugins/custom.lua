@@ -146,7 +146,7 @@ return {
     },
   },
 
-  { "Hoffs/omnisharp-extended-lsp.nvim", lazy = true },
+  --{ "Hoffs/omnisharp-extended-lsp.nvim", lazy = true },
 
   {
     'ludovicchabant/vim-gutentags',
@@ -299,6 +299,11 @@ return {
   {
     'folke/noice.nvim',
     opts = {
+      lsp ={
+        progress = {
+          enabled = true
+        }
+      },
       routes = {
         filter = {
           any = {
@@ -314,25 +319,15 @@ return {
   --  branch = "master"
   --},
 
-  -- it interferes with leader
-  --{
-  --  "smoka7/multicursors.nvim",
-  --  event = "VeryLazy",
-  --  dependencies = {
-  --      'nvimtools/hydra.nvim',
-  --  },
-  --  opts = {},
-  --  cmd = { 'MCstart', 'MCvisual', 'MCclear', 'MCpattern', 'MCvisualPattern', 'MCunderCursor' },
-  --  keys = {
-  --          {
-  --              mode = { 'v', 'n' },
-  --              '<C-n>',
-  --              '<cmd>MCstart<cr>',
-  --              desc = 'Create a selection for selected text or word under the cursor',
-  --          },
-  --      },
-  --},
-
+   {
+    "seblyng/roslyn.nvim",
+    ft = "cs",
+    ---@module 'roslyn.config'
+    ---@type RoslynNvimConfig
+    opts = {
+        -- your configuration comes here; leave empty for default settings
+    },
+  },
 
   {
     "neovim/nvim-lspconfig",
@@ -423,34 +418,33 @@ return {
 
   {
     "mason-org/mason.nvim",
-    opts = { ensure_installed = {
-        "goimports",
-        "gofumpt",
-        "gomodifytags",
-        "impl",
-        "delve",
+    lazy = true,
+    config = function()
+      require('mason').setup({
+        registries = {
+          'github:Crashdummyy/mason-registry',
+          'github:mason-org/mason-registry',
+        },
+        ensure_installed = {
+          "goimports",
+          "gofumpt",
+          "gomodifytags",
+          "impl",
+          "delve",
 
-        "phpcs",
-        "php-cs-fixer",
+          "phpcs",
+          "php-cs-fixer",
 
-        "omnisharp",
-        --"csharp-language-server",
-        "csharpier",
-        "netcoredbg",
+          --"omnisharp",
+          --"csharp-language-server",
+          "csharpier",
+          "netcoredbg",
 
-        "tflint",
-      } },
+          "tflint",
+        }
+    })
+    end
   },
-
-  -- doesn't support mason2 yet?
-  --{
-  --  "zapling/mason-lock.nvim",
-  --  init = function()
-  --    require("mason-lock").setup({
-  --        lockfile_path = vim.fn.stdpath("config") .. "/mason-lock.json" -- (default)
-  --    })
-  --  end
-  --},
 
   {
     "nvimtools/none-ls.nvim",
