@@ -212,7 +212,8 @@ return {
     config = function()
       require('incline').setup{
         render = function(props)
-          local filename = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(props.buf), ':t')
+          --local filename = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(props.buf), ':t')
+          local filename = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(props.buf), ':~')
           local modified = vim.bo[props.buf].modified
           return {
             ' ',
